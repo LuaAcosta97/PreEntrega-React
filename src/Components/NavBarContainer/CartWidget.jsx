@@ -3,9 +3,9 @@ import { PiShoppingCartSimpleFill } from "react-icons/pi";
 
 export const CartWidget = () => {
   return (
-    <div>
+    <button>
         <PiShoppingCartSimpleFill size= {30}/>
-        <button>0</button>
-    </div>
+        <div>0</div>
+    </button>
   )
 }

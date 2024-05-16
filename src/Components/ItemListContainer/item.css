@@ -1,0 +1,11 @@
+.Card-prod{
+    border-radius: 15px; 
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 40px;
+}
+
+.img-prod{
+width: 100%;
+}

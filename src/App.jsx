@@ -1,5 +1,5 @@
 import { NavBar } from './Components/NavBarContainer/NavBar'
-import { ItemLIstContainer } from './Components/ItemListContainer/ItemLIstContainer'
+import ItemListContainer from './Components/ItemListContainer/ItemLIstContainer'
 
 import './App.css'
 
@@ -10,7 +10,7 @@ function App() {
     <>
     <div className='body'>
       <NavBar/>
-      <ItemLIstContainer saludo = "BIENVENIDOS A LA TIENDA" />
+      <ItemListContainer saludo = "BIENVENIDOS A LA TIENDA" />
     </div>
 
     </>
