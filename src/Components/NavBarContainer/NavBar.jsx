@@ -1,25 +1,26 @@
 import React from 'react'
 import { CartWidget } from './CartWidget'
 import logo from '../../assets/Screenshot (211).png'
+import { Link } from 'react-router-dom'
 import './navbar.css'
 
 export const NavBar = () => {
 
   return (
     <div className='nav-bar'>
-        <div className='brand'>
-            <img className='logo' src ={logo} alt="BEAUTY SHOP" />
-        </div>
+      <Link to="/" className='brand'>
+        <img className='logo' src={logo} alt="BEAUTY SHOP" />
+      </Link>
 
-        <div className='navb'>
-            <div>Inicio</div>
-            <div>Make up</div>
-            <div>Skin care</div>
-        </div>
+      <div className='category'>
+        <Link to="/">INICIO</Link>
+        <Link to="/category/MakeUp">MAKE UP</Link>
+        <Link to="/category/SkinCare">SKIN CARE</Link>
+      </div>
 
-        <div className='carrito'> 
-            <CartWidget/>
-        </div>
+      <div className='carrito'>
+        <CartWidget />
+      </div>
     </div>
-  )
+  );
 }

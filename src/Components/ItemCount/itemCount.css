@@ -1,0 +1,23 @@
+.item-count{
+    display: flex;
+    flex-direction:inherit;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 35%;
+
+}
+
+.buttons-count{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    
+}
+
+.counts{
+    width: 55px;
+    margin: 8px;
+
+}

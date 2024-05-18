@@ -2,15 +2,23 @@ import React, { useEffect, useState } from 'react';
 import getProducts from '../../data/data';
 import ItemList from './ItemList';
 import './itemlistContainer.css'
+import { useParams } from 'react-router-dom';
 
 
 const ItemListContainer = (props) => {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
+  const { idCategory } = useParams()
 
   useEffect(() => {
     getProducts()
       .then((respuesta) => {
-        setProducts(respuesta)
+        if(idCategory){
+
+          const productsFilter = respuesta.filter( (productRes) => productRes.category === idCategory)
+          setProducts(productsFilter)
+        }else{
+        setProducts(respuesta);
+        }
       })
       .catch((error) => {
         console.error(error);

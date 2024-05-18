@@ -2,15 +2,15 @@ import React from 'react'
 import Item from './Item'
 import './itemList.css'
 
-const ItemList = ( {products} ) => {
+const ItemList = ({ products }) => {
   return (
     <div className='itemlist'>
-    {
-        products.map( (product) => (
-          <Item key= {product.id} product ={product} />
+      {
+        products.map((product) => (
+          <Item key={product.id} product={product} />
         ))
       }
-      </div>
+    </div>
   )
 }
 
