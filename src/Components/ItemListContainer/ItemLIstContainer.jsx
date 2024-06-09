@@ -1,39 +1,63 @@
 import React, { useEffect, useState } from 'react';
-import getProducts from '../../data/data';
 import ItemList from './ItemList';
-import './itemlistContainer.css'
 import { useParams } from 'react-router-dom';
+import banner from '../../assets/banner3.jpeg';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import db from '../../db/db.js';
 
 
-const ItemListContainer = (props) => {
+import './itemlistContainer.css'
+
+const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setloading] = useState(false)
   const { idCategory } = useParams()
 
+  const getProducts = () => {
+    const productsRef = collection(db, "products")
+    getDocs(productsRef)
+    .then((productsDb) => {
+      const data = productsDb.docs.map( (product)=> {
+        return{ id: product.id, ... product.data() }
+      } )
+      setProducts(data)
+    })
+
+  }
+
+  const getProductsByCategory = () => {
+    const productsRef = collection(db, "products")
+    const q = query(productsRef, where("category", "==", idCategory))
+    console.log(q)
+    getDocs(q)
+    
+    .then ((productsDb)=> {
+      
+      const data = productsDb.docs.map( (product)=> {
+        return{ id: product.id, ...product.data() }
+      } )
+      setProducts(data)
+    })
+
+
+  }
+
   useEffect(() => {
-    getProducts()
-      .then((respuesta) => {
-        if(idCategory){
+    if (idCategory){
+      getProductsByCategory()
+    }else{
+      getProducts()
+    }
+  }, [idCategory]);
 
-          const productsFilter = respuesta.filter( (productRes) => productRes.category === idCategory)
-          setProducts(productsFilter)
-        }else{
-        setProducts(respuesta);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
-        console.log("finalizo la promesa");
-      });
-  }, []);
-
-  console.log(products)
 
   return (
     <div className='container' >
-      <p className='landing'> {props.saludo} </p>
-      <ItemList className= 'itemlist' products = {products}/>
+      <img src={banner} className='banner'/>
+      <h1 className='landing'> { idCategory ? `${idCategory}`: "Bienvenidos a Beauty Shop" } </h1>
+      {
+        loading ? <div>Cargando...</div> : <ItemList className= 'itemlist' products = {products}/>
+      }
     </div>
   );
 }

@@ -1,9 +1,13 @@
+.banner{
+    width: 100%;
+}
 .landing{
     display: flex;
     justify-content: center;
     padding-top: 20px;
+    font-size:x-large;
 }
 .container{
-    background-color: rgba(156, 253, 221, 0.863);
+    background-color: #edfce3;
     height:100%;
 }
