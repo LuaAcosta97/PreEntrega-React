@@ -18,7 +18,7 @@ const ItemDetail = ({ product }) => {
   };
 
   return (
-    <div className='Detail-product'>
+    <div className='Detail-container'>
       <div>
          <img className='img-prod' src={product.image} />
       </div>

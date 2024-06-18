@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import './navbar.css'
 
 export const NavBar = () => {
-  console.log()
 
   return (
     <div className='nav-bar'>

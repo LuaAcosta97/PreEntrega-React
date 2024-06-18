@@ -5,7 +5,7 @@ import { getDoc, doc } from 'firebase/firestore';
 import db from '../../db/db';
 
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = () => { 
     const [product, setproduct] = useState({})
     const { idProduct } = useParams()
 
@@ -16,8 +16,8 @@ const ItemDetailContainer = () => {
             .then((productDb) => {
                 const data = { id: productDb.id, ...productDb.data() }
                 setproduct(data)
-            })
-    }
+            });
+    };
 
     useEffect(() => {
         getProducts()

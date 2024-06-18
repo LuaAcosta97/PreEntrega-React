@@ -40,7 +40,7 @@ const CartProvider = ({ children }) => {
         setCarrito([])
     }
 
-    // funcion detetctar prods 
+    // funcion detectar prods 
     const alreadyInCart = (idProducto) => {
         const condicion = carrito.some((productoCarrito) => productoCarrito.id === idProducto)
         return condicion
