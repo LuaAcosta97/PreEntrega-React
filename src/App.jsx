@@ -18,7 +18,7 @@ function App() {
       <BrowserRouter>
         <CartProvider>
           <NavBar />
-          <ToastContainer theme='light' position="bottom-right"/>
+          <ToastContainer theme='light' position="bottom-right" />
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
             <Route path="/category/:idCategory" element={<ItemListContainer />} />

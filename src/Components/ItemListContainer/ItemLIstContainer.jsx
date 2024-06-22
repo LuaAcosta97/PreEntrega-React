@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ItemList from './ItemList';
+import ItemList from './ItemList.jsx';
 import { useParams } from 'react-router-dom';
 import banner from '../../assets/banner3.jpeg';
 import { collection, getDocs, query, where } from 'firebase/firestore';
@@ -22,7 +22,7 @@ const ItemListContainer = () => {
           return { id: product.id, ...product.data() };
         });
         setProducts(data);
-        // detenerlo cuando se obtienen los productos
+        // detener cargador cuando se obtienen los productos
         setLoading(false);
       })
       .catch((error) => {
@@ -72,10 +72,10 @@ const ItemListContainer = () => {
 
   return (
     <div className='container' >
-      <img src={banner} alt="bannerHojas"  className='banner' />
+      <img src={banner} alt="bannerHojas" className='banner' />
       <h1 className='landing'> {idCategory ? `${idCategory}` : "Bienvenidos a Beauty Shop"} </h1>
       {
-        loading ? <div className='loading'></div> : <ItemList className='itemlist' products={products} />
+        loading ? <div className='loading-list'></div> : <ItemList className='itemlist' products={products} />
       }
     </div>
   );
